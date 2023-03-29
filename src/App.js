@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import QuizBoxHeader from "./Components/QuizBox/Header/QuizBoxHeader";
+import QuizBoxMain from "./Components/QuizBox/Main/QuizBoxMain";
+import QuizBox from "./Components/QuizBox/QuizBox";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QuizBox>
+        <QuizBoxHeader></QuizBoxHeader>
+        <QuizBoxMain></QuizBoxMain>
+      </QuizBox>
     </div>
   );
 }
