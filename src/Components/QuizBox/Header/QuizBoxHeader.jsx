@@ -1,8 +1,9 @@
 import React from "react";
 import "./QuizBoxHeader.scss";
 import info from "./info.png";
+import { useSelector } from "react-redux";
 export default function QuizBoxHeader() {
-  const [Zero, SetZero] = React.useState(0);
+  const State = useSelector((state) => state.QuizReducer);
   const [All, SetAll] = React.useState(10);
   return (
     <div className="QuizBoxHeader">
@@ -10,7 +11,7 @@ export default function QuizBoxHeader() {
         <div className="QuestionCounter">
           <img src={info}></img>
           <p>
-            Question {Zero} of {All}
+            Question {State.QuestionNumber} of {All}
           </p>
         </div>
         <div className="Timer">
@@ -23,9 +24,9 @@ export default function QuizBoxHeader() {
       </div>
 
       <div className="Question">
-        <p>Q. {"Question"}</p>
+        <p>Q. {State?.Questions[State?.QuestionNumber]}</p>
       </div>
-      <p className="Please">Please,choose one of the following answers:</p>
+      <p className="Please">Please,choose one of the following answers</p>
     </div>
   );
 }
