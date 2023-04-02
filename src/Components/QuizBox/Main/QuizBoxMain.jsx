@@ -13,10 +13,16 @@ export default function QuizBoxMain() {
   const State = useSelector((state) => state.QuizReducer);
   let Answers = [
     {
-      Questions: ["sadasd", "sadad", "asdad", "asdadadad"],
+      Questions: ["1941", "1940", "1939", "1914"],
     },
     {
-      Questions: ["321", "123", "34", "as546"],
+      Questions: ["1860", "1825", "1861", "1881"],
+    },
+    {
+      Questions: ["123", "321", "432", "54"],
+    },
+    {
+      Questions: ["123", "321", "432", "54"],
     },
   ];
   const dispatch = useDispatch();
@@ -27,7 +33,7 @@ export default function QuizBoxMain() {
         <CarouselProvider
           naturalSlideHeight={35}
           naturalSlideWidth={100}
-          totalSlides={3}
+          totalSlides={6}
         >
           <Slider>
             {Answers.map((item) => {
@@ -37,6 +43,7 @@ export default function QuizBoxMain() {
                     return (
                       <div className="Answer">
                         <input
+                          id={todo}
                           type={"checkbox"}
                           name={todo}
                           checked={State.Answers.includes(todo)}
@@ -52,7 +59,16 @@ export default function QuizBoxMain() {
                             });
                           }}
                         ></input>
-                        {todo}
+                        <label
+                          for={todo}
+                          className={
+                            State.Answers.includes(todo)
+                              ? "Checked"
+                              : "NotChecked"
+                          }
+                        >
+                          <p>{todo}</p>
+                        </label>
                       </div>
                     );
                   })}
@@ -60,25 +76,21 @@ export default function QuizBoxMain() {
               );
             })}
           </Slider>
-          <ButtonBack>
-            <button
-              className="Prev"
-              onClick={() => {
-                dispatch({ type: "MINUS_QUESTION_NUMBER", payload: 1 });
-              }}
-            >
-              Prev
-            </button>
+          <ButtonBack
+            className="PrevQuestionButton"
+            onClick={() => {
+              dispatch({ type: "MINUS_QUESTION_NUMBER", payload: 1 });
+            }}
+          >
+            Prev
           </ButtonBack>
-          <ButtonNext>
-            <button
-              className="Next"
-              onClick={() => {
-                dispatch({ type: "ADD_QUESTION_NUMBER", payload: 1 });
-              }}
-            >
-              Next
-            </button>
+          <ButtonNext
+            className="NextQuestionButton"
+            onClick={() => {
+              dispatch({ type: "ADD_QUESTION_NUMBER", payload: 1 });
+            }}
+          >
+            Next
           </ButtonNext>
         </CarouselProvider>
       </div>
