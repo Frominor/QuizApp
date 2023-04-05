@@ -3,78 +3,70 @@ import "./QuizBoxMain.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import {
-//   CarouselProvider,
-//   Slider,
-//   Slide,
-//   ButtonBack,
-//   ButtonNext,
-// } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { useDispatch, useSelector } from "react-redux";
 export default function QuizBoxMain() {
-  const State = useSelector((state) => state.QuizReducer);
-  let Answers = [
-    {
-      Questions: ["1941", "1940", "1939", "1914"],
-    },
-    {
-      Questions: ["1860", "1825", "1861", "1881"],
-    },
-    {
-      Questions: ["Пистолет", "Пуля", "Гитлер", "Его убийца"],
-    },
-    {
-      Questions: ["1991", "1990", "1988", "1999"],
-    },
-    {
-      Questions: ["1720", "1721", "1700", "1705"],
-    },
-    {
-      Questions: ["Оттава", "Ванкувер", "Хельсинки", "Веллингтон"],
-    },
-    {
-      Questions: ["Байкал", "Ильмень", "Каспийское", "Святое"],
-    },
-    {
-      Questions: [
-        "Канада и США",
-        "Россия и Китай",
-        "США и Мексика",
-        "Турция и Сирия",
-      ],
-    },
-    {
-      Questions: ["1042", "1024", "1128", "1002"],
-    },
-    {
-      Questions: ["2175", "2275", "2375", "2475"],
-    },
-  ];
   const dispatch = useDispatch();
+  const State = useSelector((state) => state.QuizReducer);
+
+  function GoNextQuestion() {
+    dispatch({ type: "ADD_QUESTION_NUMBER", payload: 1 });
+  }
+
+  function ReturnToPrevQuestion() {
+    dispatch({ type: "MINUS_QUESTION_NUMBER", payload: 1 });
+  }
+
+  function AddAnswer(e) {
+    dispatch({
+      type: "ADD_ANSWER",
+      payload: {
+        num: State.QuestionNumber,
+        answer: e.target.name,
+      },
+    });
+  }
 
   return (
     <div className="QuizBoxMain">
       <div className="Quezes">
+        <button className="Prev"></button>
+        <button className="Next"></button>
         <Slider
+          asNavFor={null}
+          prevArrow={
+            <button type="button" className={"slick-prev"}>
+              Previous
+            </button>
+          }
+          nextArrow={
+            <button
+              type="button"
+              className="slick-next"
+              disabled={
+                State.QuestionNumber + 1 <= State.Answers.length ? false : true
+              }
+            >
+              Next
+            </button>
+          }
+          draggable={false}
           dots={true}
-          speed={500}
+          speed={1000}
           infinite={false}
           slidesToScroll={1}
           slidesToShow={1}
           rows={4}
+          arrows={true}
           beforeChange={(current, next) => {
-            console.log(current, next);
-
             if (current < next) {
-              dispatch({ type: "ADD_QUESTION_NUMBER", payload: 1 });
+              GoNextQuestion();
             } else {
-              dispatch({ type: "MINUS_QUESTION_NUMBER", payload: 1 });
+              ReturnToPrevQuestion();
             }
           }}
         >
-          {Answers.map((item) => {
-            console.log(item);
+          {State.WariantsAnswers.map((item) => {
             return item.Questions.map((todo) => {
               return (
                 <div className="Answer">
@@ -86,20 +78,11 @@ export default function QuizBoxMain() {
                     onChange={(e) => {
                       const Answers = State.Answers;
                       Answers[State.QuestionNumber] = e.target.name;
-                      dispatch({
-                        type: "ADD_ANSWER",
-                        payload: {
-                          num: State.QuestionNumber,
-                          answer: e.target.name,
-                        },
-                      });
-                      dispatch({
-                        type: "GO_TO_NEXT_QUESTION",
-                        payload: true,
-                      });
+                      AddAnswer(e);
                     }}
                   ></input>
                   <label
+                    disabled={true}
                     for={todo}
                     className={
                       State.Answers.includes(todo) ? "Checked" : "NotChecked"
@@ -111,6 +94,30 @@ export default function QuizBoxMain() {
               );
             });
           })}
+          <div className="Answers">
+            <div>
+              <h3>Ваши ответы</h3>
+              {State.Answers.map((item) => {
+                return (
+                  <div
+                    className={
+                      State.RightAnswers.includes(item)
+                        ? "Correct"
+                        : "NotCorrect"
+                    }
+                  >
+                    {item}
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <h3>Правильные ответы</h3>
+              {State.RightAnswers.map((item) => {
+                return <div className="RightAnswers Correct">{item}</div>;
+              })}
+            </div>
+          </div>
         </Slider>
       </div>
     </div>
