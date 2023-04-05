@@ -1,22 +1,25 @@
 const initialState = {
-  Answers: ["", "", "", "", "", "", "", "", "", ""],
+  Answers: [],
   Questions: [
     "Когда началась первая мировая война?",
     "В каком году отменили крепостное право?",
     "Кто убил Гитлера?",
     "В каком году распался СССР?",
-    "Когда началась вторая мировая война?",
-    "Год крещения Руси?",
-    "В каком году основали Санк-Петербург?",
-    "Кто был последним президентом СССР?",
-    "Страны,граничащие с Германией?",
+    "Когда началась северная война?",
+    "Столица Канады?",
+    "Самое глубокое озеро в мире?",
+    "Между какими двумя странами самая протяженная сухопутная граница?",
+    "2^10=?",
     "45*55=?",
   ],
   QuestionNumber: 0,
+  GoNext: false,
+  GetResults: false,
 };
 const ADD_ANSWER = "ADD_ANSWER";
 const ADD_QUESTION_NUMBER = "ADD_QUESTION_NUMBER";
 const MINUS_QUESTION_NUMBER = "MINUS_QUESTION_NUMBER";
+const GO_TO_NEXT_QUESTION = "GO_TO_NEXT_QUESTION";
 
 export const QuizReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -31,6 +34,8 @@ export const QuizReducer = (state = initialState, action) => {
           }
         }),
       };
+    case GO_TO_NEXT_QUESTION:
+      return { ...state, GoNext: action.payload };
     case ADD_QUESTION_NUMBER:
       return {
         ...state,
@@ -42,10 +47,9 @@ export const QuizReducer = (state = initialState, action) => {
     case MINUS_QUESTION_NUMBER:
       return {
         ...state,
-        QuestionNumber:
-          state.QuestionNumber >= 1
-            ? state.QuestionNumber - action.payload
-            : state.QuestionNumber,
+        QuestionNumber: state.QuestionNumber
+          ? state.QuestionNumber - action.payload
+          : state.QuestionNumber,
       };
     default:
       return { ...state };

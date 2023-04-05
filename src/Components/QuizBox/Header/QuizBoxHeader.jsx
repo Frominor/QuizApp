@@ -11,7 +11,7 @@ export default function QuizBoxHeader() {
         <div className="QuestionCounter">
           <img src={info}></img>
           <p>
-            Question {State.QuestionNumber} of {All}
+            Question {State.QuestionNumber + 1} of {All}
           </p>
         </div>
         <div className="Timer">
