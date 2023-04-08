@@ -20,13 +20,6 @@ export default function QuizBoxHeader() {
               : "Конец!"}
           </p>
         </div>
-        <div className="Timer">
-          <ul>
-            <li className="Hours">1</li>
-            <li className="Minutes">2</li>
-            <li className="Seconds">3</li>
-          </ul>
-        </div>
       </div>
 
       <div className="Question">

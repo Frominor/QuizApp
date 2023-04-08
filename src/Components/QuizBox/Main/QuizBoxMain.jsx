@@ -1,9 +1,10 @@
 import React from "react";
-import "./QuizBoxMain.scss";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "pure-react-carousel/dist/react-carousel.es.css";
+import "./QuizBoxMain.scss";
 import { useDispatch, useSelector } from "react-redux";
 export default function QuizBoxMain() {
   const dispatch = useDispatch();
@@ -30,8 +31,6 @@ export default function QuizBoxMain() {
   return (
     <div className="QuizBoxMain">
       <div className="Quezes">
-        <button className="Prev"></button>
-        <button className="Next"></button>
         <Slider
           asNavFor={null}
           prevArrow={
