@@ -1,6 +1,9 @@
 .QuizBoxHeader {
   width: 65vw;
   height: 30%;
+  background: #f4ca16;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   border: 1px solid black;
   &_Info {
     margin-top: 10px;
@@ -11,7 +14,8 @@
 .QuestionCounter {
   display: flex;
   align-items: center;
-  background: #f3f3f3;
+  background: #f4a948;
+
   width: 500px;
   height: 70%;
   border-radius: 10px;
@@ -22,7 +26,7 @@
     margin-left: 30px;
   }
   p {
-    margin-left: 20px;
+    margin: 0px 0px 0px 10px;
   }
 }
 ul {
@@ -34,16 +38,19 @@ ul {
   }
 }
 .Please {
-  margin-left: 50px;
+  color: white;
+  margin: 10px 0px 0px 50px;
 }
 .Question {
   width: 95%;
-  background-color: #f7f7f7;
+  color: white;
+  background-color: #99a813;
   margin-left: 20px;
   -webkit-box-shadow: 0px 3px 10px 5px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 0px 3px 10px 5px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 3px 10px 5px rgba(34, 60, 80, 0.2);
   p {
+    margin: 0px;
     padding: 5px;
     font-size: 25px;
   }

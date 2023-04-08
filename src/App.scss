@@ -9,10 +9,15 @@
       width: 60vw;
       margin-left: 10px;
       p {
+        margin: 0px;
         font-size: 15px;
       }
     }
     .Question {
+      p {
+        margin: 0px;
+        font-size: 10px;
+      }
       margin-left: 0px;
       width: 65vw;
     }
@@ -27,8 +32,8 @@
     }
     .Question {
       p {
-        margin: 0px;
-        padding: 0px;
+        margin: 0px !important;
+        padding: 0px !important;
         width: 100% !important;
         font-size: 12px !important;
       }
@@ -40,19 +45,21 @@
     }
   }
 
+  @media only screen and (min-height: 1500px) {
+    .QuizBoxHeader {
+      height: 15%;
+      .Question {
+        p {
+          margin: 0px;
+          padding: 0px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
   @media only screen and (max-height: 1500px) {
     .QuizBoxHeader {
-      height: 21%;
-    }
-  }
-  @media only screen and (max-height: 1300px) {
-    .QuizBoxHeader {
-      height: 25%;
-    }
-  }
-  @media only screen and (max-height: 1100px) {
-    .QuizBoxHeader {
-      height: 30%;
+      height: 20;
     }
   }
 }
