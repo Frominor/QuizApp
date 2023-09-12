@@ -15,7 +15,7 @@
     }
   }
   .Quezes {
-    height: 300px;
+    height: 44vh;
   }
   .carousel {
     height: 100%;
@@ -61,7 +61,7 @@
     border-radius: 10px;
     display: block;
     width: 100px;
-    top: 79.5% !important;
+    top: 120% !important;
     height: 30px;
     padding: 10;
     z-index: 20;
@@ -80,7 +80,7 @@
     font-size: 0;
     position: absolute;
     z-index: 20;
-    top: 79.5%;
+    top: 120%;
 
     width: 100px;
     padding: 0;
@@ -105,12 +105,11 @@
   .Quezes {
     position: relative;
     .Answers {
-      width: 100vw;
-      height: 100%;
+      width: 100%;
+      height: 43vh;
       display: flex !important;
-
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: center;
     }
     .Correct {
       background: #21ca5a;

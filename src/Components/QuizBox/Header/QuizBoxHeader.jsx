@@ -10,13 +10,8 @@ export default function QuizBoxHeader() {
         <div className="QuestionCounter">
           <img src={info}></img>
           <p>
-            {State.QuestionNumber < 10
-              ? State.QuestionNumber +
-                1 +
-                " Вопрос " +
-                "из" +
-                " " +
-                (State.Questions.length - 1)
+            {State.QuestionNumber < 9
+              ? State.QuestionNumber + 1 + " Вопрос " + "из" + " " + 10
               : "Конец!"}
           </p>
         </div>
@@ -24,13 +19,22 @@ export default function QuizBoxHeader() {
 
       <div className="Question">
         {console.log(State.QuestionNumber)}
-        {State.QuestionNumber < 10 ? (
+        {State.QuestionNumber < 9 ? (
           <p>Q. {State?.Questions[State.QuestionNumber]}</p>
         ) : (
           <p>Итог</p>
         )}
       </div>
-      <p className="Please">Please,choose one of the following answers</p>
+      {State.QuestionNumber < 9 ? (
+        <p className="Please">Please,choose one of the following answers</p>
+      ) : (
+        <p
+          className="Please"
+          style={{ fontSize: 25 + "px", marginLeft: 20 + "px" }}
+        >
+          Сравните варианты ответов.
+        </p>
+      )}
     </div>
   );
 }

@@ -23,7 +23,6 @@ const initialState = {
     "Байкал",
     "Канада и США",
     "1024",
-    "2175",
   ],
   QuestionNumber: 0,
   WariantsAnswers: [
