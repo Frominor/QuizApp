@@ -18,23 +18,12 @@ export default function QuizBoxHeader() {
       </div>
 
       <div className="Question">
-        {console.log(State.QuestionNumber)}
         {State.QuestionNumber < 9 ? (
           <p>Q. {State?.Questions[State.QuestionNumber]}</p>
         ) : (
           <p>Итог</p>
         )}
       </div>
-      {State.QuestionNumber < 9 ? (
-        <p className="Please"></p>
-      ) : (
-        <p
-          className="Please"
-          style={{ fontSize: 25 + "px", marginLeft: 20 + "px" }}
-        >
-          Сравните варианты ответов.
-        </p>
-      )}
     </div>
   );
 }

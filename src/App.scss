@@ -19,10 +19,16 @@
     .Question {
       p {
         margin: 0px;
-        font-size: 10px;
       }
       margin-left: 0px;
       width: 65vw;
+    }
+  }
+  @media screen and (max-width: 650px) {
+    .Question {
+      p {
+        font-size: 15px !important;
+      }
     }
   }
   @media only screen and (max-width: 515px) {
@@ -47,7 +53,7 @@
         margin: 0px !important;
         padding: 0px !important;
         width: 100% !important;
-        font-size: 12px !important;
+        font-size: 16px !important;
       }
     }
     .Please {
