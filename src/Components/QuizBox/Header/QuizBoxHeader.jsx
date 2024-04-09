@@ -26,7 +26,7 @@ export default function QuizBoxHeader() {
         )}
       </div>
       {State.QuestionNumber < 9 ? (
-        <p className="Please">Please,choose one of the following answers</p>
+        <p className="Please"></p>
       ) : (
         <p
           className="Please"

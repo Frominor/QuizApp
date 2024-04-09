@@ -33,7 +33,7 @@ export default function QuizBoxMain() {
       <div className="Quezes">
         {State.QuestionNumber == 9 ? (
           <div className="Answers">
-            <div style={{ width: 200 + "px", marginRight: 40 + "px" }}>
+            <div style={{ width: 45 + "%" }}>
               <h3>Ваши ответы</h3>
               {State.Answers.map((item) => {
                 return (
@@ -49,17 +49,10 @@ export default function QuizBoxMain() {
                 );
               })}
             </div>
-            <div>
+            <div style={{ width: 45 + "%" }}>
               <h3>Правильные ответы</h3>
               {State.RightAnswers.map((item) => {
-                return (
-                  <div
-                    className="RightAnswers Correct"
-                    style={{ marginLeft: 40 + "px" }}
-                  >
-                    {item}
-                  </div>
-                );
+                return <div className="RightAnswers Correct">{item}</div>;
               })}
             </div>
           </div>
